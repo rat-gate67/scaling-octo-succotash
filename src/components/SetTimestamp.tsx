@@ -16,6 +16,10 @@ const SetTimestamp: React.FC<SetTimestampProps> = ({ contract }) => {
         }
     };
 
+    if (!contract) {
+        return <p>Contract not set</p>;
+    }
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!file) return;

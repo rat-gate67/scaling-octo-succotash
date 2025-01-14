@@ -23,6 +23,11 @@ const GetTimestamp: React.FC<GetTimestampProps> = ({ contract }) => {
         const fileBuffer = await file.arrayBuffer();
         const hash = ethers.keccak256(new Uint8Array(fileBuffer));
 
+        if (!contract) {
+            console.error("Contract not set");
+            return;
+        }
+
         try {
             const timestamp = await contract.getTimestamp(hash);
             setTimestamp(timestamp.toString());
