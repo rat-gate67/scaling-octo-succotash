@@ -14,7 +14,6 @@ import abi from "./utils/FileTimestamp.json";
 const App = () => {
     const [currentAccount, setCurrentAccount] = useState<string | null>(null);
     const [contract, setContract] = useState<ethers.Contract | null>(null);
-    const [signer, setSigner] = useState<ethers.Signer | null>(null);
 
     const contractAddress = "0x021D117574E8e0682CB65B9BE4EB059a30BdE5f9";
     const contractABI = abi.abi;
@@ -26,12 +25,11 @@ const App = () => {
             const { ethereum } = window as any;
             if (ethereum) {
                 const provider = new ethers.BrowserProvider(ethereum);
-                const newSigner = await provider.getSigner();
-                setSigner(newSigner);
+                const signer = await provider.getSigner();
                 const contract = new ethers.Contract(
                     contractAddress, 
                     contractABI, 
-                    newSigner);
+                    signer);
                 setContract(contract);
             } else {
                 console.error("Ethereum object doesn't exist!");
