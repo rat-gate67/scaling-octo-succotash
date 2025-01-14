@@ -2,8 +2,11 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 
+interface GetTimestampProps {
+    contract: ethers.Contract | null;
+}
 
-const GetTimestamp = ({ contract }) => {
+const GetTimestamp: React.FC<GetTimestampProps> = ({ contract }) => {
     const [file, setFile] = useState<File | null>(null);
     const [timestamp, setTimestamp] = useState<string | null>(null);
 

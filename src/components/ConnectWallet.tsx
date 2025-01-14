@@ -9,7 +9,7 @@ const ConnectWallet: React.FC<ConnectWalletProps> = ({ setCurrentAccount }) => {
 
     const connectWallet = async () => {
         try {
-            const { ethereum } = window;
+            const { ethereum } = window as any;
             if (!ethereum) {
                 alert('Please install MetaMask!');
                 return;
