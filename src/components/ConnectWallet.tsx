@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-const ConnectWallet = ({ setCurrentAccount }) => {
+interface ConnectWalletProps {
+    setCurrentAccount: (address: string) => void;
+}
 
-
+const ConnectWallet: React.FC<ConnectWalletProps> = ({ setCurrentAccount }) => {
 
     const connectWallet = async () => {
         try {
